@@ -7,7 +7,7 @@ This is an example of creating a function that runs as nestjs using the serverle
 ### 1. Install Serverless Environment
 
 ```bash
-$ npm install aws-lambda aws-serverless-express
+$ npm install aws-lambda aws-serverless-express express
 ```
 
 ### 2. copy `src/index.ts` and `serverless.yml`
