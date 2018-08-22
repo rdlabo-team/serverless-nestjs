@@ -1,39 +1,20 @@
-# nest-for-lambda
+# serverless-nestjs
 
-## Description
+This is an example of creating a function that runs as nestjs using the serverless framework.
 
-description
+## How to copy your project
 
-## Installation
-
-```bash
-$ npm install
-```
-
-## Running the app
+### 1. Install Serverless Environment
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-npm run start:prod
+$ npm install aws-lambda aws-serverless-express
 ```
 
-## Test
+### 2. copy `src/index.ts` and `serverless.yml`
+This is minimum setting. if necessary, you add the setting.
 
+## How to Deploy
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+$ npm run prestart:prod
+$ sls deploy
 ```
-
-# nestjs_for_lamnda
