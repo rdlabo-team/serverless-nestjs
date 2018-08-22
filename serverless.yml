@@ -14,7 +14,7 @@ package:
 
 functions:
   index:
-    handler: dist/src/index.handler
+    handler: dist/index.handler
     events:
     - http:
         cors: true
