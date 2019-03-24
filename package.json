@@ -1,55 +1,50 @@
 {
-  "name": "nest-for-lambda",
+  "name": "serverless-nestjs",
   "version": "0.0.0",
   "description": "description",
   "author": "",
   "license": "MIT",
   "scripts": {
-    "format": "prettier --write \"**/*.ts\"",
+    "build": "tsc -p tsconfig.build.json",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
     "start:dev": "nodemon",
-    "prestart:prod": "rm -rf dist && tsc",
+    "start:debug": "nodemon --config nodemon-debug.json",
+    "prestart:prod": "rimraf dist && npm run build",
     "start:prod": "node dist/main.js",
-    "start:hmr": "node dist/server",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
     "test": "jest",
+    "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
-    "webpack": "webpack --config webpack.config.js"
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
     "@nestjs/common": "^6.0.0",
     "@nestjs/core": "^6.0.0",
-    "@nestjs/platform-express": "^6.0.2",
-    "acorn": "^6.1.1",
+    "@nestjs/platform-express": "^6.0.0",
     "aws-lambda": "^0.1.2",
     "aws-serverless-express": "^3.3.5",
-    "express": "^4.16.3",
-    "fastify-formbody": "^2.0.0",
+    "express": "^4.16.4",
     "reflect-metadata": "^0.1.12",
-    "rxjs": "^6.0.0",
-    "typescript": "^3.0.0"
+    "rimraf": "^2.6.2",
+    "rxjs": "^6.3.3"
   },
   "devDependencies": {
+    "@types/express": "^4.16.0",
+    "@types/jest": "^23.3.13",
+    "@types/node": "^10.12.18",
+    "@types/supertest": "^2.0.7",
     "@nestjs/testing": "^6.0.0",
-    "@types/express": "^4.0.39",
-    "@types/jest": "^21.1.8",
-    "@types/node": "^9.3.0",
-    "@types/supertest": "^2.0.4",
     "jest": "^23.6.0",
-    "nodemon": "^1.14.1",
-    "prettier": "^1.11.1",
-    "request": "^2.88.0",
-    "serverless": "^1.39.1",
-    "serverless-offline": "^4.9.2",
-    "supertest": "^3.0.0",
+    "nodemon": "^1.18.9",
+    "prettier": "^1.15.3",
+    "supertest": "^3.4.1",
     "ts-jest": "^23.10.5",
-    "ts-loader": "^4.1.0",
-    "ts-node": "^4.1.0",
-    "tsconfig-paths": "^3.1.1",
-    "tslint": "5.3.2",
-    "webpack": "^4.2.0",
-    "webpack-cli": "^2.0.13",
-    "webpack-node-externals": "^1.6.0"
+    "ts-node": "^7.0.1",
+    "tsconfig-paths": "^3.7.0",
+    "tslint": "5.12.1",
+    "typescript": "^3.2.4"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -62,6 +57,7 @@
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
-    "coverageDirectory": "../coverage"
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
   }
 }
