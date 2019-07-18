@@ -19,6 +19,7 @@ Sample publish. https://mmjdx4zxmc.execute-api.ap-northeast-1.amazonaws.com/dev/
 $ npm install serverless -g
 $ git clone git@github.com:rdlabo/serverless-nestjs.git 【projectName】
 $ cd 【projectName】
+$ npm install
 $ npm start
 ```
 
