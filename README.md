@@ -45,6 +45,7 @@ $ npm start
 Then browse http://localhost:3000
 
 #### use serverless-offline
+__after also doing an: `npm run build`__
 
 ```bash
 $ sls offline
