@@ -16,7 +16,7 @@ Sample publish. https://mmjdx4zxmc.execute-api.ap-northeast-1.amazonaws.com/dev/
 ### Prepare
 
 ```
-$ npm install serverless -g
+$ npm install @nestjs/cli serverless -g
 $ git clone git@github.com:rdlabo/serverless-nestjs.git 【projectName】
 $ cd 【projectName】
 $ npm install
@@ -24,6 +24,27 @@ $ npm start
 ```
 
 ### Development
+#### use NestCLI
+
+```
+$ npm start
+```
+
+```
+$ npm start
+> serverless-nestjs@0.0.0 start /Users/sakakibara/dev/serverless-nestjs
+> nest start
+
+[Nest] 3905   - 11/29/2019, 4:40:49 PM   [NestFactory] Starting Nest application...
+[Nest] 3905   - 11/29/2019, 4:40:49 PM   [InstanceLoader] AppModule dependencies initialized +20ms
+[Nest] 3905   - 11/29/2019, 4:40:49 PM   [RoutesResolver] AppController {/}: +6ms
+[Nest] 3905   - 11/29/2019, 4:40:49 PM   [RouterExplorer] Mapped {/, GET} route +3ms
+[Nest] 3905   - 11/29/2019, 4:40:49 PM   [NestApplication] Nest application successfully started +4ms
+```
+
+Then browse http://localhost:3000
+
+#### use serverless-offline
 
 ```bash
 $ sls offline
@@ -41,18 +62,6 @@ Serverless: Offline listening on http://localhost:3000
 ```
 
 Then browse http://localhost:3000
-
-The logs should be :
-
-```
-Serverless: ANY / (λ: index)
-[Nest] 5280   - 2019-03-24 14:44   [NestFactory] Starting Nest application...
-[Nest] 5280   - 2019-03-24 14:44   [InstanceLoader] AppModule dependencies initialized +11ms
-[Nest] 5280   - 2019-03-24 14:44   [RoutesResolver] AppController {/}: +5ms
-[Nest] 5280   - 2019-03-24 14:44   [RouterExplorer] Mapped {/, GET} route +2ms
-[Nest] 5280   - 2019-03-24 14:44   [NestApplication] Nest application successfully started +1ms
-```
-
 
 ## How to Deploy
 ```bash
@@ -90,7 +99,7 @@ custom:
 ### Use Swagger for development
 
 ```
-$ ts-node src/swagger.ts
+$ npx ts-node src/swagger.ts
 ```
 
 ```
