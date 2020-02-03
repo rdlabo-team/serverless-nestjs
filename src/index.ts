@@ -1,4 +1,4 @@
-import { Context, Handler } from 'aws-lambda';
+import { APIGatewayProxyHandler } from 'aws-lambda';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Server } from 'http';
@@ -8,21 +8,20 @@ import * as express from 'express';
 
 let cachedServer: Server;
 
-function bootstrapServer(): Promise<Server> {
+const bootstrapServer = async (): Promise<Server> => {
   const expressApp = express();
   const adapter = new ExpressAdapter(expressApp);
-  return NestFactory.create(AppModule, adapter)
-    .then(app => app.enableCors())
-    .then(app => app.init())
-    .then(() => serverless.createServer(expressApp));
+  const app = await NestFactory.create(AppModule, adapter)
+  app.enableCors()
+  app.init()
+  return serverless.createServer(expressApp)
 }
 
-export const handler: Handler = (event: any, context: Context) => {
+export const handler: APIGatewayProxyHandler = async (event, context) => {
   if (!cachedServer) {
-    bootstrapServer().then(server => {
-      cachedServer = server;
-      return serverless.proxy(server, event, context);
-    });
+    const server = await bootstrapServer()
+    cachedServer = server;
+    return serverless.proxy(server, event, context);
   } else {
     return serverless.proxy(cachedServer, event, context);
   }
