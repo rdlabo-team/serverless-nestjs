@@ -17,12 +17,13 @@ const bootstrapServer = async (): Promise<Server> => {
   return serverless.createServer(expressApp)
 }
 
-export const handler: APIGatewayProxyHandler = async (event, context) => {
+export const handler: APIGatewayProxyHandler = (event, context) => {
   if (!cachedServer) {
-    const server = await bootstrapServer()
-    cachedServer = server;
-    return serverless.proxy(server, event, context);
+    bootstrapServer().then(server => {
+      cachedServer = server;
+      return serverless.proxy(server, event, context);
+    });
   } else {
-    return serverless.proxy(cachedServer, event, context);
+    serverless.proxy(cachedServer, event, context);
   }
 };
