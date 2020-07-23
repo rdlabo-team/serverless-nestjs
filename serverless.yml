@@ -2,7 +2,8 @@ service: serverless-nestjs
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs12.x
+  region: us-east-1
 
 plugins:
   - serverless-offline
