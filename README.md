@@ -66,7 +66,7 @@ Then browse http://localhost:3000
 
 ## How to Deploy
 ```bash
-$ npm run prestart:prod && sls deploy
+$ npm run build && sls deploy
 ```
 
 ## Options
