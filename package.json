@@ -47,7 +47,7 @@
     "eslint-plugin-prettier": "^3.4.1",
     "jest": "^27.3.0",
     "prettier": "^2.4.1",
-    "serverless-offline": "^6.9.0",
+    "serverless-offline": "^12.0.4",
     "source-map-support": "^0.5.20",
     "supertest": "^6.1.6",
     "swagger-ui-express": "^4.3.0",
